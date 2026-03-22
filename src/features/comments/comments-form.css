@@ -1,0 +1,21 @@
+.form input{
+    background-color: #0f0f0f;
+    border: none;
+    border-bottom: 1px solid #3f3f3f;
+    height: 30px;
+    width: 500px;
+    box-sizing: border-box;
+    color: white;
+}
+
+.form{
+    margin: 10px;
+}
+
+.form button{
+    height: 30px;
+    box-sizing: border-box;
+    width: 60px;
+    border-radius: 15px;
+    background-color: #3ea6ff;
+}

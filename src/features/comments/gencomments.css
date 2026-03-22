@@ -1,0 +1,62 @@
+.comment{
+    padding: 10px;
+    margin: 10px;
+    list-style: none;
+    border-radius: 10px;
+    color: white;
+    height: auto;
+}
+
+.logo-username{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.username-text{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.username-text p{
+    font-weight: bold;
+    font-size: smaller;
+}
+.username-text li{
+    font-size:large;
+}
+.like-button{
+    display: flex;
+    gap: 10px;
+}
+.dislike-button{
+    display: flex;
+    gap: 10px;
+
+}
+.text-reply{
+    display: flex;
+    justify-content: space-between;
+}
+
+.likes-replies{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    margin-left: 40px;
+    margin-top: 10px;
+}
+
+.likes-replies button{
+    background: none;
+    color: white;
+    border: none;
+    font-weight: bold;
+}
+*{
+    margin: 0;
+}
+.replies{
+    margin-left: 40px;
+    margin-top: 20px;
+}
