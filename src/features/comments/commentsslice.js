@@ -4,6 +4,19 @@ const initialState = {
     comments: [],
 }
 
+function findobj(state, id) {
+    for (let node of state) {
+        if (node.id === id) {
+            return node;
+        }
+        if (node.reply && node.reply.length > 0) {
+            const found = findobj(node.reply, id);
+            if (found) return found;
+        }
+    }
+    return null;
+}
+
 export const commentsSlice = createSlice({
     name: 'counter',
     initialState,
@@ -12,19 +25,15 @@ export const commentsSlice = createSlice({
             state.comments.push(action.payload.values);
         },
         addreply: (state, action) => {
-            state.comments[action.payload.parentindex].reply.push(action.payload.values);
+            // state.comments[action.payload.parentindex].reply.push(action.payload.values);
+            findobj(state.comments,action.payload.id).reply.push(action.payload.values);
         },
         addlike: (state, action) => {
-            state.comments[action.payload.parentindex].likes+=1;
-        },
-        addreplylike:(state,action)=>{
-            state.comments[action.payload.parentindex].reply[action.payload.replyindex].likes+=1;
+            // state.comments[action.payload.parentindex].likes+=1;
+            findobj(state.comments,action.payload.id).likes+=1
         },
         adddislike: (state, action) => {
-            state.comments[action.payload.parentindex].dislikes+=1;
-        },
-        addreplydislike:(state,action)=>{
-            state.comments[action.payload.parentindex].reply[action.payload.replyindex].dislikes+=1;
+            findobj(state.comments,action.payload.id).dislikes+=1
         }
     }
 })

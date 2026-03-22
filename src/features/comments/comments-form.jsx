@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addcomment, addreply } from './commentsslice';
 import { Formik, useFormik } from 'formik';
 import './comments-form.css'
-
+import { v4 as uuidv4 } from 'uuid';
 
 const CommentsForm = (props) => {
     const { comments } = useSelector((state) => state.commentR)
@@ -16,12 +16,16 @@ const CommentsForm = (props) => {
             reply: [],
         },
         onSubmit: (values) => {
+            const newcomment = {
+                ...values,
+                id:uuidv4()
+            }
             if (props.state) {
-                dispatch(addreply({ values, parentindex: (props.parentindex) }));
+                dispatch(addreply({values : newcomment, parentindex: (props.parentindex),id:(props.id)}));
                 props.setstate(!props.state);
             }
             else {
-                dispatch(addcomment({ values }));
+                dispatch(addcomment({ values : newcomment,id:(props.id)}));
             }
         }
     })
